@@ -1,0 +1,30 @@
+# 第三方仓库：这是别人的项目，只在本机学习用；单独 fork，不随本仓库发布
+apps/fullstack-mall/
+
+# 本机工具链（JDK/Maven 分发包，不入库）
+tools/
+
+# 构建产物
+**/target/
+**/build/
+*.class
+*.jar
+
+# 日志与命令行抓包结果（可能包含 token，一律不入库）
+*.log
+sandbox/*.json
+
+# 本地密钥 / 环境配置
+sandbox/jwt-secret.txt
+*.env
+.env.local
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.suo
+
+# 系统文件
+.DS_Store
+Thumbs.db
