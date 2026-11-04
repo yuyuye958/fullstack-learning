@@ -19,6 +19,10 @@ sandbox/jwt-secret.txt
 *.env
 .env.local
 
+# 本机启动脚本：写死了本机绝对路径与本地开发库口令，只在本机用，不入库
+sandbox/start-mall.ps1
+sandbox/start-mall-default.ps1
+
 # IDE
 .idea/
 *.iml
