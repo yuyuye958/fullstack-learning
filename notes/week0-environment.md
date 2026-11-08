@@ -14,7 +14,7 @@
 长期学习目录：
 
 ```
-C:\Users\AyaInory\fullstack-learning\
+C:\Develop\private\fullstack-learning\
 ├── apps\
 │   └── fullstack-mall\        # 从临时目录迁移来的仓库，保留完整 git 历史
 ├── notes\                     # 学习笔记（本文件所在目录）
@@ -34,7 +34,7 @@ C:\Users\AyaInory\fullstack-learning\
 | Windows | 已有 | 10.0（Windows 11），amd64 | — | `mvn -v` 输出中的 `OS name` | `OS name: "windows 11", version: "10.0", arch: "amd64"` |
 | Git | 已有 | 2.34.0.windows.1 | 系统 PATH 中 | `git --version` | `git version 2.34.0.windows.1` |
 | JDK | 已安装 | Temurin 21.0.13+9 LTS | `C:\Program Files\Eclipse Adoptium\jdk-21.0.13.9-hotspot` | `& "$env:JAVA_HOME\bin\java.exe" -version` | `openjdk version "21.0.13" 2026-10-20 LTS` / `OpenJDK Runtime Environment Temurin-21.0.13+9 (build 21.0.13+9-LTS)` |
-| Maven | 已安装（手工 zip） | 3.9.9 | `C:\Users\AyaInory\fullstack-learning\tools\apache-maven-3.9.9` | `mvn -v` | `Apache Maven 3.9.9 (8e8579a9e76f7d015ee5ec7bfcdc97d260186937)`；`Java version: 21.0.13, vendor: Eclipse Adoptium` |
+| Maven | 已安装（手工 zip） | 3.9.9 | `C:\Develop\private\fullstack-learning\tools\apache-maven-3.9.9` | `mvn -v` | `Apache Maven 3.9.9 (8e8579a9e76f7d015ee5ec7bfcdc97d260186937)`；`Java version: 21.0.13, vendor: Eclipse Adoptium` |
 | Docker CLI | 已安装 | 29.9.2（Docker Desktop 4.97.0） | `C:\Program Files\Docker\Docker\resources\bin` | `docker --version` | `Docker version 29.9.2, build a82e528` |
 | Docker 引擎 | **可用** | Server 29.9.2；WSL 3.0.3.0，发行版 `docker-desktop` Running | `C:\Program Files\Docker\Docker` | `docker info --format '{{.ServerVersion}}'` | `ServerVersion=29.9.2`；`docker ps` 正常 |
 | IntelliJ IDEA Community | 已安装 | 2025.2.6.2 | `C:\Program Files\JetBrains` | `winget list --id JetBrains.IntelliJIDEA.Community` | 已安装；`idea64.exe` 存在 |
@@ -92,14 +92,14 @@ winget 中没有可用的 Maven 包（`winget search --id Apache.Maven --exact` 
 ```powershell
 # 1) 每个新终端显式设置（因为新进程不会自动继承刚写入的 User 环境变量）
 $env:JAVA_HOME='C:\Program Files\Eclipse Adoptium\jdk-21.0.13.9-hotspot'
-$env:MAVEN_HOME='C:\Users\AyaInory\fullstack-learning\tools\apache-maven-3.9.9'
+$env:MAVEN_HOME='C:\Develop\private\fullstack-learning\tools\apache-maven-3.9.9'
 $env:Path="$env:JAVA_HOME\bin;$env:MAVEN_HOME\bin;"+$env:Path
 
 # 2) JWT_SECRET 必须设置，否则 ${JWT_SECRET} 占位符无法解析
-$env:JWT_SECRET=(Get-Content 'C:\Users\AyaInory\fullstack-learning\sandbox\jwt-secret.txt' -Raw).Trim()
+$env:JWT_SECRET=(Get-Content 'C:\Develop\private\fullstack-learning\sandbox\jwt-secret.txt' -Raw).Trim()
 
 # 3) 先把 contract 装进本地仓库（父工程目录执行）
-cd C:\Users\AyaInory\fullstack-learning\apps\fullstack-mall\backend
+cd C:\Develop\private\fullstack-learning\apps\fullstack-mall\backend
 mvn -B -pl contract -am -DskipTests install
 
 # 4) 在 service 模块目录启动（不要在父工程目录直接 spring-boot:run）
@@ -113,7 +113,7 @@ mvn -B spring-boot:run "-Dspring-boot.run.profiles=local"
 $bytes = New-Object byte[] 32
 [System.Security.Cryptography.RandomNumberGenerator]::Create().GetBytes($bytes)
 $secret = [Convert]::ToBase64String($bytes)
-Set-Content -Path 'C:\Users\AyaInory\fullstack-learning\sandbox\jwt-secret.txt' -Value $secret -NoNewline
+Set-Content -Path 'C:\Develop\private\fullstack-learning\sandbox\jwt-secret.txt' -Value $secret -NoNewline
 ```
 
 ### 3.3 真实启动日志（摘要）
@@ -155,18 +155,18 @@ Started FullstackMallApplication in 2.271 seconds (process running for 2.457)
 
 ```powershell
 $env:JAVA_HOME='C:\Program Files\Eclipse Adoptium\jdk-21.0.13.9-hotspot'
-$env:MAVEN_HOME='C:\Users\AyaInory\fullstack-learning\tools\apache-maven-3.9.9'
+$env:MAVEN_HOME='C:\Develop\private\fullstack-learning\tools\apache-maven-3.9.9'
 $env:Path="$env:JAVA_HOME\bin;$env:MAVEN_HOME\bin;"+$env:Path
-$env:JWT_SECRET=(Get-Content 'C:\Users\AyaInory\fullstack-learning\sandbox\jwt-secret.txt' -Raw).Trim()
-Set-Location 'C:\Users\AyaInory\fullstack-learning\apps\fullstack-mall\backend\service'
+$env:JWT_SECRET=(Get-Content 'C:\Develop\private\fullstack-learning\sandbox\jwt-secret.txt' -Raw).Trim()
+Set-Location 'C:\Develop\private\fullstack-learning\apps\fullstack-mall\backend\service'
 & "$env:MAVEN_HOME\bin\mvn.cmd" -B spring-boot:run '-Dspring-boot.run.profiles=local' 2>&1 |
-    Out-File -FilePath 'C:\Users\AyaInory\fullstack-learning\sandbox\server.log' -Encoding utf8
+    Out-File -FilePath 'C:\Develop\private\fullstack-learning\sandbox\server.log' -Encoding utf8
 ```
 
 创建与启动任务：
 
 ```powershell
-schtasks.exe /create /tn "mall-backend-local" /tr "powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\Users\AyaInory\fullstack-learning\sandbox\start-mall.ps1" /sc once /st 23:59 /f
+schtasks.exe /create /tn "mall-backend-local" /tr "powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\Develop\private\fullstack-learning\sandbox\start-mall.ps1" /sc once /st 23:59 /f
 schtasks.exe /run /tn "mall-backend-local"
 ```
 
@@ -192,7 +192,7 @@ Logon Mode:    Interactive only
 任务 `mall-backend-local` 已指向 `sandbox\start-mall-default.ps1`（不再带 `-Dspring-boot.run.profiles=local`）：
 
 ```powershell
-schtasks.exe /create /tn "mall-backend-local" /tr "powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\Users\AyaInory\fullstack-learning\sandbox\start-mall-default.ps1" /sc once /st 23:59 /f
+schtasks.exe /create /tn "mall-backend-local" /tr "powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\Develop\private\fullstack-learning\sandbox\start-mall-default.ps1" /sc once /st 23:59 /f
 schtasks.exe /run /tn "mall-backend-local"
 ```
 
@@ -342,7 +342,7 @@ Stop-Process -Id 32140        # 若 java 进程仍在
 
 ```powershell
 # 1) 起依赖容器（compose 里 MySQL 映射 3308，Redis 6379）
-cd C:\Users\AyaInory\fullstack-learning\apps\fullstack-mall
+cd C:\Develop\private\fullstack-learning\apps\fullstack-mall
 docker compose -f docker-compose.dev.yml up -d
 docker ps    # 等到 fullstack-mall-mysql / fullstack-mall-redis 都是 (healthy)
 
@@ -350,17 +350,17 @@ docker ps    # 等到 fullstack-mall-mysql / fullstack-mall-redis 都是 (health
 schtasks.exe /run /tn "mall-backend-local"
 
 # 3) 看日志 / 停止
-Get-Content 'C:\Users\AyaInory\fullstack-learning\sandbox\server-default.log' -Tail 30
+Get-Content 'C:\Develop\private\fullstack-learning\sandbox\server-default.log' -Tail 30
 schtasks.exe /end /tn "mall-backend-local"
 ```
 
 前台方式（自己终端里跑，Ctrl+C 停止，同样走默认 profile）：
 
 ```powershell
-cd C:\Users\AyaInory\fullstack-learning\apps\fullstack-mall\backend\service
+cd C:\Develop\private\fullstack-learning\apps\fullstack-mall\backend\service
 $env:JAVA_HOME='C:\Program Files\Eclipse Adoptium\jdk-21.0.13.9-hotspot'
-$env:Path="$env:JAVA_HOME\bin;C:\Users\AyaInory\fullstack-learning\tools\apache-maven-3.9.9\bin;"+$env:Path
-$env:JWT_SECRET=(Get-Content 'C:\Users\AyaInory\fullstack-learning\sandbox\jwt-secret.txt' -Raw).Trim()
+$env:Path="$env:JAVA_HOME\bin;C:\Develop\private\fullstack-learning\tools\apache-maven-3.9.9\bin;"+$env:Path
+$env:JWT_SECRET=(Get-Content 'C:\Develop\private\fullstack-learning\sandbox\jwt-secret.txt' -Raw).Trim()
 $env:DB_URL='jdbc:mysql://localhost:3308/fullstack_mall?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&useSSL=false'
 $env:DB_USERNAME='mall'; $env:DB_PASSWORD='mall_dev_password'
 $env:REDIS_HOST='localhost'; $env:REDIS_PORT='6379'
@@ -397,7 +397,7 @@ mvn spring-boot:run "-Dspring-boot.run.profiles=local"
 所以第 6 节不再是阻塞项。之后若要重建环境，只需：
 
 ```powershell
-cd C:\Users\AyaInory\fullstack-learning\apps\fullstack-mall
+cd C:\Develop\private\fullstack-learning\apps\fullstack-mall
 docker compose -f docker-compose.dev.yml up -d
 ```
 

@@ -356,7 +356,7 @@ GET /api/products/abc  ->  HTTP 400
 
 ```powershell
 # 1) 容器
-cd C:\Users\AyaInory\fullstack-learning\apps\fullstack-mall
+cd C:\Develop\private\fullstack-learning\apps\fullstack-mall
 docker compose -f docker-compose.dev.yml up -d
 docker compose -f docker-compose.dev.yml ps
 
@@ -367,7 +367,7 @@ docker exec fullstack-mall-redis redis-cli KEYS 'mall:product:detail:*'
 # 3) 默认 profile 启动（脚本 sandbox\start-mall-default.ps1，由计划任务 mall-backend-local 调用）
 schtasks.exe /run  /tn "mall-backend-local"
 schtasks.exe /end  /tn "mall-backend-local"
-Get-Content C:\Users\AyaInory\fullstack-learning\sandbox\server-default.log -Tail 20
+Get-Content C:\Develop\private\fullstack-learning\sandbox\server-default.log -Tail 20
 
 # 4) 日志位置
 #   sandbox\server-default.log   （默认 profile）

@@ -213,7 +213,7 @@ mvn -B test -Dtest=MoneyBookServiceTest
 #3 2026-11-03 收入 工资     17600.00  11 月工资
 #6 2026-11-04 支出 购物       199.00  键盘垫
 
-CSV 已导出: C:\Users\AyaInory\fullstack-learning\sandbox\java-basics\target\moneybook-demo.csv（7 行，含表头）
+CSV 已导出: C:\Develop\private\fullstack-learning\sandbox\java-basics\target\moneybook-demo.csv（7 行，含表头）
 ```
 
 ### 5.3 `target\moneybook-demo.csv`

@@ -39,6 +39,8 @@ notes/
 ├── week0-environment.md          # Week 0 环境搭建全过程（命令、端口、验证输出、踩坑）
 ├── week0-database-redis.md       # H2 → MySQL/Redis 的差异、缓存行为、事务实测
 ├── 一个请求的一生.md              # 一个 GET 请求从 Controller 到数据库的完整链路
+├── project-personal-site/
+│   └── plan.md                   # 个人网站（首页 AI Agent）的分阶段建设计划，嵌入 16 周节奏
 └── week1/
     ├── index.md                  # 本周目标、七天日历、验收清单、自测题（含答案）
     ├── day1.md                   # 基本类型 / 字符串 / == 与 equals / 值传递

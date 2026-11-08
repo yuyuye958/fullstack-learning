@@ -2,7 +2,7 @@
 
 - 适用对象：8 年前端（Vue/JS），后端零基础；每天可投入 4–6 小时
 - 对应计划：`fullstack-ai-agent-learning-plan.md` 5.5 节 Week 1（语法 + 面向对象 + 异常），只在「记账本需要」的范围内提前用到集合、Lambda/Stream、文件读写
-- 练习工程：`C:\Users\AyaInory\fullstack-learning\sandbox\java-basics`
+- 练习工程：`C:\Develop\private\fullstack-learning\sandbox\java-basics`
 - 本周主线产出：可运行的 CLI 记账本 `MoneyBook` + 20 个 JUnit 5 测试全绿
 
 > 一句话策略：**本周不求"学完 Java"，只求"能读写 Spring 代码的最小语言能力"**。泛型高级用法、Stream 进阶、NIO、并发实现、JVM 细节全部留给第 2、3 周和 Phase 2，不要提前啃。
@@ -45,7 +45,7 @@
 
 ## 3. 练习工程怎么用
 
-位置：`C:\Users\AyaInory\fullstack-learning\sandbox\java-basics`
+位置：`C:\Develop\private\fullstack-learning\sandbox\java-basics`
 
 ```
 src/main/java/com/aya/learning/
@@ -76,9 +76,9 @@ src/test/java/com/aya/learning/
 常用命令（PowerShell，每次新开窗口都要先设这两个变量）：
 
 ```powershell
-cd C:\Users\AyaInory\fullstack-learning\sandbox\java-basics
+cd C:\Develop\private\fullstack-learning\sandbox\java-basics
 $env:JAVA_HOME='C:\Program Files\Eclipse Adoptium\jdk-21.0.13.9-hotspot'
-$env:Path="$env:JAVA_HOME\bin;C:\Users\AyaInory\fullstack-learning\tools\apache-maven-3.9.9\bin;"+$env:Path
+$env:Path="$env:JAVA_HOME\bin;C:\Develop\private\fullstack-learning\tools\apache-maven-3.9.9\bin;"+$env:Path
 
 mvn -B test                                   # 全量测试
 mvn -B test -Dtest=DrillsTest                 # 只跑一个测试类

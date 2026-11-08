@@ -10,9 +10,9 @@
 Java 不像 JS 直接 `node app.js`：先编译成 `.class`，再由 JVM 执行。
 
 ```powershell
-cd C:\Users\AyaInory\fullstack-learning\sandbox\java-basics
+cd C:\Develop\private\fullstack-learning\sandbox\java-basics
 $env:JAVA_HOME='C:\Program Files\Eclipse Adoptium\jdk-21.0.13.9-hotspot'
-$env:Path="$env:JAVA_HOME\bin;C:\Users\AyaInory\fullstack-learning\tools\apache-maven-3.9.9\bin;"+$env:Path
+$env:Path="$env:JAVA_HOME\bin;C:\Develop\private\fullstack-learning\tools\apache-maven-3.9.9\bin;"+$env:Path
 
 mvn -q compile
 java -cp target/classes com.aya.learning.taskrunner.demo.TaskRunnerDemo
